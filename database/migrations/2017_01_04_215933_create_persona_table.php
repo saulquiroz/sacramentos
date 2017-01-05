@@ -21,7 +21,7 @@ class CreatePersonaTable extends Migration
             $table->string('apellido');
             $table->date('fechanacimiento');
             $table->integer('genero_id')->unsigned();
-            $table->foreign('genero_id')->references('id')->on('genero')->onDelete('cascade');
+            $table->foreign('genero_id')->references('id')->on('genero');
             $table->timestamps();   
         });
     }
