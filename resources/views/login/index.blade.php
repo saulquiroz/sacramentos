@@ -6,15 +6,20 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ingreso Sacramental</title>
+        <title>Sacramentos</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!--  <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/form-elements.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">-->
+        {!!Html::style('css/login/bootstrap/css/bootstrap.min.css')!!}
+        {!!Html::style('font-awesome/css/font-awesome.min.css')!!}
+        {!!Html::style('css/login/css/form-elements.css')!!}
+        {!!Html::style('css/login/css/style.css')!!}
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -48,6 +53,7 @@
                             </div>
                         </div>
                     </div>
+                    @include('alerts.errors') 
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
@@ -60,7 +66,8 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
+			                    
+                                {!!Form::open(['route' => 'login.store', 'method' => 'POST'])!!}
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Email</label>
 			                        	<input type="text" name="email" placeholder="alguien@gmail.com" class="form-username form-control" id="form-username">
@@ -71,8 +78,8 @@
 			                        </div>
 			                        <button type="submit" class="btn">Entrar!</button>
                                     <br><br>
-                                   <a href="../PersonaReg.php"> <button type="button" class="btn">Aun no tienes cuenta? Registrate!</button> </a>
-			                    </form>
+                                   <a href="{!!URL::to('/login/create')!!}"> <button type="button" class="btn">Aun no tienes cuenta? Registrate!</button> </a>
+			                    {!!Form::close()!!}
 		                    </div>
                         </div>
                     </div>
