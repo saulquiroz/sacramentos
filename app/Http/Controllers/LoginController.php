@@ -7,7 +7,6 @@ use App\Http\Requests;
 use Auth;
 use Session;
 use Redirect;
-use App\Http\Requests\LoginRequest;
 
 
 class LoginController extends Controller
@@ -33,7 +32,7 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LoginRequest $request)
+    public function store(Request $request)
     {
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
         {
