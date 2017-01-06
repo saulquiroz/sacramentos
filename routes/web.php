@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('login','LoginController');
+Route::resource('usuario', 'UsuarioController');

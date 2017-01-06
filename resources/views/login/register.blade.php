@@ -9,7 +9,7 @@
 	      			
 	      			<div class="widget-header">
 	      				<i class="icon-user"></i>
-	      				<h3>Registro de Usuarios</h3>
+	      				<h3>REGISTRO DE USUARIOS</h3>
 	  				</div> <!-- /widget-header -->
 					
 					<div class="widget-content">
@@ -21,16 +21,19 @@
 						
 							<div class="tab-content">
 								<div class="tab-pane active" id="formcontrols" >
-								<form id="edit-profile" class="form-horizontal">
+								
+								{!!Form::open(['route'=>'usuario.store','method'=>'POST'])!!}
+								
+								
 									<fieldset>
 										<h2 align="left">Informacion General </h2><hr>
-
-										    <div class="control-group">											
+										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+										<div class="control-group">											
 											<label class="control-label" for="radiobtns"><b>Carnet de Identidad: </b></label>
 											
                                             <div class="controls">
                                                <div class="input-append">
-                                                  <input class="span5 m-wrap" id="appendedInputButton" type="text">
+                                                  <input class="span5 m-wrap" id="appendedInputButton" name="ci" type="text">
                                                   <button class="btn btn-primary" type="button">Verificar!</button>
                                                 </div>
                                               </div>	<!-- /controls -->			
@@ -40,7 +43,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="firstname"><b>Nombre: </b></label>
 											<div class="controls">
-												<input type="text" class="span5" id="firstname" value="">
+												<input type="text" class="span5" id="firstname" name="nombre" value="">
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										
@@ -48,7 +51,7 @@
 										<div class="control-group">											
 											<label class="control-label" for="lastname"><b>Apellido:</b></label>
 											<div class="controls">
-												<input type="text" class="span5" id="lastname" value="">
+												<input type="text" class="span5" id="lastname" name="apellido" value="">
 											</div> <!-- /controls -->				
 										</div> <!-- /control-group -->
 										<div class="control-group">
@@ -77,7 +80,8 @@
 												<input type="text" class="span5" id="facebook" name="facebook" value="">
 											</div> <!-- /controls -->				
 										</div><br>
-											<h2 align="left">Informacion de la cuenta</h2><hr>
+																
+								<h2 align="left">Informacion de la cuenta</h2><hr>
 										<div class="control-group">											
 											<label class="control-label" for="celular"><b>Email: </b></label>
 											<div class="controls">
@@ -87,26 +91,20 @@
 										<div class="control-group">	
 											<label class="control-label" for="password1">Contraseña</label>
 											<div class="controls">
-												<input type="password" class="span5" id="password1" value="">
+												<input type="password" class="span5" id="password1" name="password" value="">
 											</div>				
-										</div> <!-- /control-group -->
-										<div class="form-actions" align="center">
-											<button type="submit" class="btn btn-primary">Registrar</button> 
-											<button class="btn">Cancelar</button>
-										</div> <!-- /form-actions -->
+										</div> <!-- /control-group --><br>
+											
+										<!-- /form-actions -->
 									</fieldset>
-								</form>
+								{!!Form::submit('Registrar', ['class'=>'btn btn-primary'])!!}
+								{!!Form::close()!!}
 								</div>
 															
 							</div>
-						  
-						  
+						  						  
 						</div>
-						
-						
-						
-						
-						
+
 					</div> <!-- /widget-content -->
 						
 				</div> <!-- /widget -->
