@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Session;
-use Redirect;
-use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests;
+use App\Persona;
 
 class UsuarioController extends Controller
 {
@@ -38,9 +36,22 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        Session::flash('message','Usuario creado correctamente');
-        return Redirect::to('/login');
+        #User::create($request->all());
+        #Session::flash('message','Usuario creado correctamente');
+        #return Redirect::to('/login');
+        $this->validate($request, [
+                'ci' => 'required'
+            ]);
+        $persona = new Persona();
+        $persona->ci = $request->ci;
+        $persona->nombre = $request->nombre;
+        $persona->apellido = $request->apellido;
+        $persona->fechanacimiento = $request->fechanac;
+        $persona->genero_id = $request->genero;
+        $persona->save();
+
+
+        dd('Datos Guardados');
     }
 
     /**

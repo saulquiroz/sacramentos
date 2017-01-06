@@ -1,6 +1,6 @@
 @extends('layouts.inicio')
 	@section('content')
-		{!!Form::open()!!}
+	]
 		<br>
 				<div class="span3">.</div>
 				<div class="span7">      		
@@ -22,9 +22,9 @@
 							<div class="tab-content">
 								<div class="tab-pane active" id="formcontrols" >
 								
-								{!!Form::open(['route'=>'usuario.store','method'=>'POST'])!!}
+								{!!Form::open(['url'=>'usuario','method'=>'post'])!!}
 								
-								
+								{{ csrf_field()}}
 									<fieldset>
 										<h2 align="left">Informacion General </h2><hr>
 										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -35,6 +35,12 @@
                                                <div class="input-append">
                                                   <input class="span5 m-wrap" id="appendedInputButton" name="ci" type="text">
                                                   <button class="btn btn-primary" type="button">Verificar!</button>
+                                                  @if($errors->has('ci'))
+                                                  	<span class="help-block" style="color:red;">
+                                                  		<strong>{{$errors->first('ci')}}</strong>
+                                                  	</span>
+                                                  @endif
+
                                                 </div>
                                               </div>	<!-- /controls -->			
 										</div>
@@ -80,6 +86,7 @@
 												<input type="text" class="span5" id="facebook" name="facebook" value="">
 											</div> <!-- /controls -->				
 										</div><br>
+								}
 																
 								<h2 align="left">Informacion de la cuenta</h2><hr>
 										<div class="control-group">											
@@ -110,7 +117,7 @@
 				</div> <!-- /widget -->
 	      		
 		    </div>
-		{!!Form::close()!!}
+	]
 	@endsection
 
 		@section('scripts')
