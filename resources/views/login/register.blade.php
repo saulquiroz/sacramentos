@@ -1,6 +1,6 @@
 @extends('layouts.inicio')
 	@section('content')
-	]
+	
 		<br>
 				<div class="span3">.</div>
 				<div class="span7">      		
@@ -27,7 +27,10 @@
 								{{ csrf_field()}}
 									<fieldset>
 										<h2 align="left">Informacion General </h2><hr>
+										@include('alerts.register-incorrect') 
 										<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+										<input type="hidden" name="tipo" value="0" id="tipo">
+										
 										<div class="control-group">											
 											<label class="control-label" for="radiobtns"><b>Carnet de Identidad: </b></label>
 											
@@ -86,7 +89,7 @@
 												<input type="text" class="span5" id="facebook" name="facebook" value="">
 											</div> <!-- /controls -->				
 										</div><br>
-								}
+								
 																
 								<h2 align="left">Informacion de la cuenta</h2><hr>
 										<div class="control-group">											
@@ -117,7 +120,7 @@
 				</div> <!-- /widget -->
 	      		
 		    </div>
-	]
+	
 	@endsection
 
 		@section('scripts')

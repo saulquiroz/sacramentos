@@ -53,7 +53,8 @@
                             </div>
                         </div>
                     </div>
-                    @include('alerts.errors') 
+                    @include('alerts.errors')
+                    @include('alerts.register-correct') 
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">

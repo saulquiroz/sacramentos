@@ -36,7 +36,7 @@ class LoginController extends Controller
     {
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
         {
-        	return Redirect::to('inicio');
+        	return Redirect::to('/inicio');
         }
         Session::flash('message-error', 'Los datos son incorrectos, Ingrese correctamente los datos');
         return Redirect::to('/login');
