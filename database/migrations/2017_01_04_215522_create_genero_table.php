@@ -17,7 +17,6 @@ class CreateGeneroTable extends Migration
         {
             $table->increments('id');
             $table->string('genero');
-            $table->timestamps();
         });
     }
 
