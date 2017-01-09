@@ -10,7 +10,7 @@ use Auth;
 use Session;
 use Redirect;
 
-//tgoasdoiasdjiaos
+//jajajajajaj se tu contraseña nabo
     
 class UsuarioController extends Controller
 {
