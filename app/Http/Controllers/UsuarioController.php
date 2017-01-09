@@ -10,7 +10,7 @@ use Auth;
 use Session;
 use Redirect;
 
-
+//jkahdkjasdhasjkhdasj
     
 class UsuarioController extends Controller
 {
