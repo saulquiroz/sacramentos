@@ -13,8 +13,8 @@ class CreatePersonaTable extends Migration
      */
     public function up()
     {
-        Schema::create('persona', function (Blueprint $table) 
-        { 
+        Schema::create('persona', function (Blueprint $table)
+        {
             $table->increments('id');
             $table->integer('ci');
             $table->string('nombre');
@@ -22,7 +22,7 @@ class CreatePersonaTable extends Migration
             $table->date('fechanacimiento');
             $table->integer('genero_id')->unsigned();
             $table->foreign('genero_id')->references('id')->on('genero');
-            $table->timestamps();   
+            $table->timestamps();
         });
     }
 
@@ -33,6 +33,6 @@ class CreatePersonaTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('persona');
     }
 }
