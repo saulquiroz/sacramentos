@@ -1,7 +1,9 @@
 @if(Session::has('message-error'))
-	<div class="col-md-6 col-md-offset-3 alert alert-danger alert-dismissible" role="alert">
-	  <b>
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	 {{Session::get('message-error')}}</b>
-	</div>
+
+<div id="card-alert" class="card red">
+  <div class="card-content white-text">
+    <p>{{Session::get('message-error')}}</p>
+  </div>
+	
+  </div>
 @endif

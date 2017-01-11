@@ -1,105 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sacramentos</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>Login Page</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+  <!-- Favicons-->
+  <link rel="icon" href="img/demo/images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="img/demo/images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="img/demo/images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
 
-      <!--  <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/form-elements.css">
-        <link rel="stylesheet" href="css/style.css">-->
-        {!!Html::style('css/login/bootstrap/css/bootstrap.min.css')!!}
-        {!!Html::style('font-awesome/css/font-awesome.min.css')!!}
-        {!!Html::style('css/login/css/form-elements.css')!!}
-        {!!Html::style('css/login/css/style.css')!!}
+  <link href="css/demo/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/demo/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->
+    <link href="css/demo/css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/demo/css/layouts/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="js/demo/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/demo/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
+</head>
 
-    </head>
+<body class="cyan">
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
 
-    <body>
-    
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Registro</strong> de Fieles</h1>
-                            <div class="description">
-                            	<p>
-	                            	Ingrese a su cuenta o registrese para emitir sus certificados de sacramentos.
-                            	</p>
-                            </div>
-                        </div>
-                    </div>
-                    @include('alerts.errors')
-                    @include('alerts.register-correct') 
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
-                        		<div class="form-top-left">
-                        			<h3>Ingrese a nuestro sitio</h3>
-                            		<p>Ingrese su usuario y clave para ingresar al sistema:</p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-lock"></i>
-                        		</div>
-                            </div>
-                            <div class="form-bottom">
-			                    
-                                {!!Form::open(['route' => 'login.store', 'method' => 'POST'])!!}
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Email</label>
-			                        	<input type="text" name="email" placeholder="alguien@gmail.com" class="form-username form-control" id="form-username">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="password" placeholder="Password" class="form-password form-control" id="form-password">
-			                        </div>
-			                        <button type="submit" class="btn">Entrar!</button>
-                                    <br><br>
-                                   <a href="{!!URL::to('/login/create')!!}"> <button type="button" class="btn">Aun no tienes cuenta? Registrate!</button> </a>
-			                    {!!Form::close()!!}
-		                    </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-            
+  @include('alerts.errors')
+  @include('alerts.register-correct')
+
+
+  <div id="profile-page-wall-posts" class="row">
+    <div class="col s12  card-panel">
+      <h1 align="center"><strong>Bienvenido</strong></h1>
+    {!!Form::open(['route' => 'login.store', 'method' => 'POST'])!!}
+        <div class="row">
+          <div class="input-field col s12 center">
+            <img src="img/logo.jpg" alt="" class="circle responsive-img valign profile-image-login">
+<p class="center login-form-text">Registro de Fieles</p>
+          </div>
         </div>
 
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input id="email" name="email" type="text">
+            <label for="email" class="center-align">Correo: </label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" name="password" type="password">
+            <label for="password">Contraseña:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Recordar</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button type="submit" class="btn waves-effect waves-light col s12">Entrar!</button>
+          </div>
+          <div class="description">
+              <br><br><p>	Ingrese a su cuenta o registrese para emitir sus certificados de sacramentos.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+              <p><a class="btn waves-effect waves-light light-blue darken-4" href="{!!URL::to('/login/create')!!}">Registrate Ahora</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p><a class="btn waves-effect waves-light light-blue darken-4">Recuperar Cuenta</a></p>
+          </div>
+        </div>
 
-        <!-- Javascript -->
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.backstretch.min.js"></script>
-        <script src="js/scripts.js"></script>
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+    {!!Form::close()!!}
 
-    </body>
+  </div>
+</div>
+
+
+
+  <!-- ================================================
+    Scripts
+    ================================================ -->
+
+  <!-- jQuery Library -->
+  <script type="text/javascript" src="js/demo/js/plugins/jquery-1.11.2.min.js"></script>
+  <!--materialize js-->
+  <script type="text/javascript" src="js/demo/js/materialize.js"></script>
+  <!--prism-->
+  <script type="text/javascript" src="js/demo/js/plugins/prism/prism.js"></script>
+  <!--scrollbar-->
+  <script type="text/javascript" src="js/demo/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+      <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/demo/js/plugins.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/demo/js/custom-script.js"></script>
+    <script src="js/jquery.backstretch.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
 
 </html>

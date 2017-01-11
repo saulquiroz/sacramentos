@@ -7,6 +7,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use Illuminate\Http\Request;
+use DB;
+use Mail;
+
 class RegisterController extends Controller
 {
     /*
@@ -48,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'tipoUsuario' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -67,5 +71,40 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+      $input = $request->all();
+      $validator = $this->validator($input);
+
+      if($validator->passes())
+      {
+        $user = $this->create($input)->toArray();
+        $user['link'] = str_random(30);
+
+        DB::table('userActivacion')->insert(['user_id' => $user['id'], 'token' => $user['link']]);_
+        Mail::sent('emails.activation', $user, function ($message) use ($user){
+          $message->to($user['email']);
+          $message->subject('Codigo de Activacion - Sacramento CEB');
+        });
+        return redirect()->to('login')->with('success', 'JOEL TE ENVIO UN CODIGO DE ACTIVACION, Por favor revisa tu email');
+      }
+      return back()->with('errors', $validator->errors());
+    }
+
+    public function userActivacion($token)
+    {
+      $check = DB::table('userActivacion')->where('token', $token)->first();
+      if (!is_null($check)) {
+        $user = User::find($check->user_id);
+        if ($user->is_activated == 1) {
+          return redirect()->to('login')->with('success', 'Su cuenta ya ha sido activada');
+        }
+        $user->update(['is_activated' => 1]);
+        DB::table('userActivacion')->where('token', $token)->delete();
+        return redirect()->to('login')->with('success', 'Usuario activado con éxito');
+      }
+      return redirect()->to('login')->with('warning', 'Tu atentificacion es invalida');
     }
 }

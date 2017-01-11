@@ -36,16 +36,31 @@ class LoginController extends Controller
     {
         if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']]))
         {
-        	return Redirect::to('/inicio');
+        	return Redirect::to('inicio');
         }
         Session::flash('message-error', 'Los datos son incorrectos, Ingrese correctamente los datos');
-        return Redirect::to('/login');
+        return Redirect::to('login');
     }
 
     public function logout()
     {
     	Auth::logout();
-    	return Redirect::to('/login');
+    	return Redirect::to('login');
+    }
+
+    public function admin()
+    {
+      return view('admin.index');
+    }
+
+    public function fiel()
+    {
+      return view('fiel.index');
+    }
+
+    public function sacerdote()
+    {
+      return view('sacerdote.index');
     }
     /**
      * Display the specified resource.

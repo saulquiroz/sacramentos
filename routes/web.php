@@ -19,3 +19,8 @@ Route::get('/', function () {
 Route::resource('/login','LoginController');
 Route::resource('usuario', 'UsuarioController');
 
+Route::get('/user/activation/{token}', 'Auth\RegisterController@userActivacion');
+
+Route::get('admin', 'LoginController@admin');
+Route::get('fiel', 'LoginController@fiel');
+Route::get('sacerdote', 'LoginController@sacerdote');
