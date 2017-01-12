@@ -1,7 +1,9 @@
 @extends('layouts.login')
   @section('content')
-    <div id="profile-page-wall-posts" class="row">
-      <div class="col s12  card-panel">
+
+  <div class="section">
+    <div class="row">
+      <div class="col s12 card-panel">
         <h1 align="center"><strong>BIENVENIDO</strong></h1>
       {!!Form::open(['route' => 'login.store', 'method' => 'POST'])!!}
           <div class="row">
@@ -34,9 +36,9 @@
             <div class="input-field col s12">
               <button type="submit" class="btn waves-effect waves-light col s12">Entrar!</button>
             </div>
-            <div class="description">
-                <br><br><p>	Ingrese a su cuenta o registrese para emitir sus certificados de sacramentos.</p>
-            </div>
+
+                <!--<br><br><br><p>	Ingrese a su cuenta o registrese para emitir sus certificados de sacramentos.</p>-->
+
           </div>
           <div class="row">
             <div class="input-field col s6 m6 l6">
@@ -49,4 +51,6 @@
       {!!Form::close()!!}
       </div>
     </div>
+  </div>
+
   @endsection
